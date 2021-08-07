@@ -1,0 +1,30 @@
+<form [formGroup]="profileForm" (ngSubmit)="submit()">
+        <div class="form-group">
+                <label for="exampleInputName">Name </label>
+                <input type="text" class="form-control" placeholder="Enter Name" 
+                formControlName="name">
+            <strong *ngIf="name.invalid && name.touched" class="text-danger">Invalid Name</strong>
+              </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email address</label>
+      <input type="email" class="form-control" id="exampleInputEmail1"  placeholder="Enter email" 
+      formControlName="email">
+      
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">DOB</label>
+      <input type="date" class="form-control" placeholder="DOB" 
+      formControlName="date" min="1970-01-01" max="2003-12-31">
+    </div>
+    <div class="form-group">
+            <label for="exampleInputPassword1">Mobile Number</label>
+            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Mobile Number" 
+            formControlName="phone_number">
+            <ng-template [ngIf]="errorObj">
+                    <strong class="text-danger">{{errorObj}}</strong>
+                </ng-template>
+          </div>
+        
+    <button type="submit" class="btn btn-primary" [disabled]="profileForm.invalid">Submit</button>
+  </form>
+  <h1 *ngIf="loading">loading....</h1>
